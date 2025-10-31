@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IRegistroVentasRepository, RegistroVentasRepository>();
 builder.Services.AddTransient<IRegistroComprasRepository,RegistrocomprasRepository>();
+builder.Services.AddTransient<IRegistroArticulosRepository, RegistroArticulosRepository>();
 
 builder.Services.AddControllers(options =>
 {
@@ -30,7 +31,7 @@ builder.Services.AddSwaggerGen(options =>
         Name = "Authorization",
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
         Scheme = "Bearer",
-        BearerFormat = "JWT", // Aunque no uses JWT, esto es estético
+        BearerFormat = "JWT", // Aunque no uses JWT, esto es estï¿½tico
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
         Description = "Introduce tu token como: Bearer {tu_token}"
     });
