@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IRegistroVentasRepository, RegistroVentasRepository>();
 builder.Services.AddTransient<IRegistroComprasRepository,RegistrocomprasRepository>();
 builder.Services.AddTransient<IRegistroArticulosRepository, RegistroArticulosRepository>();
+builder.Services.AddTransient<IRegistroClientesRepository, RegistroClientesRepository>();
 
 builder.Services.AddControllers(options =>
 {

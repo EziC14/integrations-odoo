@@ -8,6 +8,5 @@ namespace OdooCls.Core.Interfaces
         Task<bool> UpdateDescripcionYSituacion(string artcod, string descripcion, string situacion);
         Task<bool> ExisteArticulo(string artcod);
 
-    // Validaciones de maestros eliminadas; no se requieren
     }
 }
