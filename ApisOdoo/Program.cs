@@ -17,6 +17,7 @@ builder.Services.AddTransient<IRegistroVentasRepository, RegistroVentasRepositor
 builder.Services.AddTransient<IRegistroComprasRepository,RegistrocomprasRepository>();
 builder.Services.AddTransient<IRegistroArticulosRepository, RegistroArticulosRepository>();
 builder.Services.AddTransient<IRegistroClientesRepository, RegistroClientesRepository>();
+builder.Services.AddTransient<IRegistroProveedoresRepository, RegistroProveedoresRepository>();
 
 builder.Services.AddControllers(options =>
 {

@@ -28,6 +28,12 @@ namespace OdooCls.Application.Services
                 if (await repo.ExisteArticulo(dto.ARTCOD))
                     return new ApiResponse<RegistroArticulosDto>(400, 2007, $"Artículo {dto.ARTCOD} ya existe");
 
+                // Validar situación 01/02/99
+                var sit = (dto.ARSITU ?? string.Empty).Trim();
+                var allowedSit = new HashSet<string>(new[] { "01", "02", "99" });
+                if (!allowedSit.Contains(sit))
+                    return new ApiResponse<RegistroArticulosDto>(400, 2013, "ARSITU debe ser uno de: 01 (Activo), 02 (Bloqueado), 99 (Anulado)");
+
                 var entity = RegistroArticulosMapper.DtoToEntity(dto);
                 var ok = await repo.InsertTarti(entity);
                 if (ok)
@@ -59,6 +65,12 @@ namespace OdooCls.Application.Services
 
                 if (string.IsNullOrWhiteSpace(dto.ARSITU))
                     return new ApiResponse<RegistroArticulosDto>(400, 2012, "ARSITU (Situación) es obligatorio para actualizar");
+
+                // Validar situación 01/02/99
+                var sit = dto.ARSITU.Trim();
+                var allowedSit = new HashSet<string>(new[] { "01", "02", "99" });
+                if (!allowedSit.Contains(sit))
+                    return new ApiResponse<RegistroArticulosDto>(400, 2013, "ARSITU debe ser uno de: 01 (Activo), 02 (Bloqueado), 99 (Anulado)");
 
                 var ok = await repo.UpdateDescripcionYSituacion(dto.ARTCOD, dto.ARTDES, dto.ARSITU);
                 if (ok)
